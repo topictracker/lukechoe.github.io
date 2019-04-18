@@ -2,21 +2,28 @@
 <html>
    <head>
       <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-route.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-resource.min.js"></script>
+      <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+      <script type="text/javascript" src="zingchart/zingchart/src/zingchart-angularjs.js"></script>
+     <script src="controllers/GraphController.js"></script>
+
+
+      <link rel="stylesheet" href="format.css">
    </head>
 
-   <body ng-app = "myapp">
-      <div ng-controller = "HelloController" >
-         <h2>Welcome {{helloTo.title}} to the world of Tutorialspoint!</h2>
-      </div>
+   <body ng-app = "TopicTracker">
+       <div ng-controller="VisualsController">
+         <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
+           <div id="controls">
+             <section>
+               <label>Add random values : </label><button ng-click="addValues()"> append </button>
+             </section>
+             <section>
+               <label>Title Text : </label><input type="text" ng-model="myJson.title.text"/>
+             </section>
 
-      <script>
-         angular.module("myapp", [])
-
-         .controller("HelloController", function($scope) {
-            $scope.helloTo = {};
-            $scope.helloTo.title = "AngularJS";
-         });
-      </script>
-
+       </div>
+       </div>
    </body>
 </html>
