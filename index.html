@@ -4,9 +4,16 @@
       <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-route.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular-resource.min.js"></script>
+
       <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+      <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
       <script type="text/javascript" src="zingchart/zingchart/src/zingchart-angularjs.js"></script>
-     <script src="controllers/GraphController.js"></script>
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+      <!-- GRAPH -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
 
 
       <link rel="stylesheet" href="format.css">
@@ -14,16 +21,25 @@
 
    <body ng-app = "TopicTracker">
        <div ng-controller="VisualsController">
-         <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
-           <div id="controls">
-             <section>
-               <label>Add random values : </label><button ng-click="addValues()"> append </button>
-             </section>
-             <section>
-               <label>Title Text : </label><input type="text" ng-model="myJson.title.text"/>
-             </section>
+           <table ng-table="politicalCandidates" show-filter="true" class="table table-striped">
+               <tr ng-repeat="p in politicians">
+                   <td data-title="'Name'" sortable="'Name'">{{p.name}}</td>
+                   <td><input type="checkbox" ng-click="toggleData(p)"></td>
+               </tr>
+           </table>
 
+           <div zingchart id="myChart" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
+          <div id="controls">
+            <section>
+              <label>Add random valuesss : </label><button ng-click="addValues()"> append </button>
+            </section>
+            <section>
+              <label>Title Text : </label><input type="text" ng-model="myJson.title.text"/>
+            </section>
+      </div>
        </div>
-       </div>
+
    </body>
+   <script type="text/javascript" src="controllers/GraphController.js"></script>
+
 </html>
