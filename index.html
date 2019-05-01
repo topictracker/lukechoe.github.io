@@ -21,14 +21,18 @@
 
    <body ng-app = "TopicTracker">
        <div ng-controller="VisualsController">
-           <table ng-table="politicalCandidates" show-filter="true" class="table table-striped">
-               <tr ng-repeat="p in politicians">
+           <div id=listOfCandidates>
+           <table ng-table="politicalCandidates" show-filter="true" class="table">
+               <tr class="hoverme" ng-repeat="p in politicians" ng-click="toggleData(p)">
                    <td data-title="'Name'" sortable="'Name'">{{p.name}}</td>
-                   <td><input type="checkbox" ng-click="toggleData(p)"></td>
                </tr>
            </table>
+           </div>
+           <div id = "zchart">
+               <div zingchart id="myChart" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
+           </div>
 
-           <div zingchart id="myChart" zc-json="myJson" zc-width="100%" zc-height="500px"></div>
+          <!--
           <div id="controls">
             <section>
               <label>Add random valuesss : </label><button ng-click="addValues()"> append </button>
@@ -36,7 +40,7 @@
             <section>
               <label>Title Text : </label><input type="text" ng-model="myJson.title.text"/>
             </section>
-      </div>
+      </div> -->
        </div>
 
    </body>

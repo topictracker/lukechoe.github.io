@@ -13,3 +13,23 @@ html,body{
   color : white;
   padding: 10px;
 }
+
+
+#listOfCandidates{
+    display: inline-block;
+    float: left;
+    width:25%;
+}
+#zchart{
+    display: inline-block;
+    width:75%;
+}
+
+.hoverme:hover
+{
+background-color: #00FF00;
+}
+.clicked
+{
+background-color:green;
+}
